@@ -60,9 +60,6 @@ public class MainActivity extends AppCompatActivity {
         String name = binding.nameInput.getText().toString();
         db.addMemo(new Memo(name));
         updateRecyclerView();
-        for (Memo i : db.getAllMemosAsList()){
-            Log.i("test", ""+i.getId());
-        }
         binding.nameInput.setText("");
     }
 
@@ -70,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateRecyclerView() {
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(db.getAllMemosAsList());
-
         binding.output.setHasFixedSize(true);
         binding.output.setLayoutManager(new LinearLayoutManager(this));
         binding.output.setAdapter(adapter);
